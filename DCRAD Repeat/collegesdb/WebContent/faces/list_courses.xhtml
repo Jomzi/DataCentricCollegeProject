@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Colleges DB - Manage Courses</title>
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{coursesController.getCourses()}"/>
+		</f:metadata>
+	</h:head>
+	<h:body>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:form>
+			<h:messages styleClass="message"/>
+			<h:commandButton value="Add Course" action="add_course"/>
+			<h:dataTable value="#{coursesController.courses}" var="course"
+				headerClass="tableHeader"
+				rowClasses="tableOddRow,tableEvenRow">
+				<h:column>    				
+					<f:facet name="header">College ID</f:facet>    				
+					<h:outputText value="#{course.college.colID}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Course ID</f:facet>
+					<h:outputText value="#{course.cID}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Course Name</f:facet>
+					<h:outputText value="#{course.cName}"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<br />
+		<h:link value="Home" outcome="index"/>
+	</h:body>
+</html>

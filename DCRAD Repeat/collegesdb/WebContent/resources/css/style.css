@@ -1,0 +1,22 @@
+.tableHeader {
+	padding: 5px;
+	text-align: left;
+	color: white;
+	background-color: #0066FF;
+}
+
+.tableOddRow {
+	background-color: #CCCCFF;
+}
+
+.tableEvenRow {
+	background-color: white;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.error{
+	color: red;
+}

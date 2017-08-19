@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+		<meta charset="ISO-8859-1"/>
+		<title>CollegesDB - Update College</title>
+	</h:head>
+	
+	<h:body>
+		<h:outputStylesheet library="css" name="style.css"/>
+		
+		<h:messages styleClass="error" globalOnly="true"/>
+		<h3>Update College</h3>
+		
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="College ID: "/>
+				<h:inputText value="#{collegesController.updateCollege.colID}" readonly="true"/>
+
+				<h:outputText value="Name: "/>
+				<h:column>
+					<h:inputText id="colName" value="#{collegesController.updateCollege.colName}" required="true" requiredMessage="Name is mandatory"/>&#160;
+					<h:message for="colName" styleClass="error"/>
+				</h:column>
+				
+				<h:outputText value="Address: "/>
+				<h:inputText value="#{collegesController.updateCollege.colAddr}"/>
+			</h:panelGrid>
+			
+			<h:commandButton value="Update" action="#{collegesController.updateCollege(collegesController.updateCollege)}"/>
+		</h:form>
+		<br />
+		<h:link value="Home" outcome="index"/>&#160;
+		<h:link value="Colleges" outcome="list_colleges"/>
+	</h:body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Colleges DB - Manage Colleges</title>
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{collegesController.getColleges()}"/>
+		</f:metadata>
+	</h:head>
+	<h:body>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:form>
+			<h:messages styleClass="error"/>
+			<h:commandButton value="Add College" action="add_college"/>
+			<h:dataTable value="#{collegesController.colleges}" var="college"
+				headerClass="tableHeader"
+				rowClasses="tableOddRow,tableEvenRow">
+				<h:column>    				
+					<f:facet name="header">College ID</f:facet>    				
+					<h:outputText value="#{college.colID}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">College Name</f:facet>
+					<h:outputText value="#{college.colName}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">College Address</f:facet>
+					<h:outputText value="#{college.colAddr}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:commandLink value="Update" action="#{collegesController.setUpdateCollege(college)}"/>&#160;
+					<h:commandLink value="Delete" action="#{collegesController.deleteCollege(college)}" onclick="if(confirm('Delete this college?')){return true}return false;"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<br />
+		<h:link value="Home" outcome="index"/>
+	</h:body>
+</html>

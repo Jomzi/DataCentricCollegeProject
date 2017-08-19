@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+		<meta charset="ISO-8859-1"/>
+		<title>CollegesDB - Add Student</title>
+	</h:head>
+	
+	<h:body>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:messages styleClass="error" globalOnly="true"/>
+		<h3>Add Student</h3>
+		
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Student ID: "/>
+				<h:column>
+					<h:inputText id="sID" value="#{student.sID}" required="true" requiredMessage="Student ID is mandatory"/>&#160;
+					<h:message for="sID" styleClass="error"/>
+				</h:column>
+			
+				<h:outputText value="First Name: "/>
+				<h:column>
+					<h:inputText id="fName" value="#{student.first_name}" required="true" requiredMessage="First Name is mandatory"/>&#160;
+					<h:message for="fName" styleClass="error"/>
+				</h:column>
+				
+				<h:outputText value="Surname: "/>
+				<h:column>
+					<h:inputText id="sName" value="#{student.last_name}" required="true" requiredMessage="Surname is mandatory"/>&#160;
+					<h:message for="sName" styleClass="error"/>
+				</h:column>
+				
+				<h:outputText value="Address: "/>
+				<h:inputText value="#{student.address}"/>
+
+			
+				<h:outputText value="College ID: "/>
+				<h:column>
+					<h:inputText id="colID" value="#{student.course.college.colID}" required="true" requiredMessage="College ID is mandatory"/>&#160;
+					<h:message for="colID" styleClass="error"/>
+				</h:column>
+
+				<h:outputText value="Course ID: "/>
+				<h:column>
+					<h:inputText id="cID" value="#{student.course.cID}" required="true" requiredMessage="Course ID is mandatory"/>&#160;
+					<h:message for="cID" styleClass="error"/>
+				</h:column>
+			</h:panelGrid>
+			
+			<h:commandButton value="Add" action="#{studentsController.addStudent(student)}"/>
+		</h:form>
+		<br />
+		<h:link value="Home" outcome="index"/>&#160;
+		<h:link value="Students" outcome="list_students"/>
+	</h:body>
+</html>
